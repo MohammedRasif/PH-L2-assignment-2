@@ -6,24 +6,26 @@ export const pool = new Pool({
 })
 
 export const initDB = async () => {
-  try{
+  try {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS users(
         id SERIAL PRIMARY KEY,
         name VARCHAR(100) NOT NULL,
         email VARCHAR(100) NOT NULL UNIQUE,
         password VARCHAR(255) NOT NULL,
+        role VARCHAR(50) NOT NULL DEFAULT 'contributor',
         is_active BOOLEAN DEFAULT TRUE,
-        age INT ,
-
+        age INT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `);
-      console.log("Database created successfully")
-  }
-  catch(error){
-    console.log("Database error", error)
+
+    await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS role VARCHAR(50) NOT NULL DEFAULT 'contributor'`);
+
+    console.log("Database created successfully");
+  } catch (error) {
+    console.log("Database error", error);
   }
 };
 
