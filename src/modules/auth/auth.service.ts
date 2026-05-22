@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import { pool } from "../../db/index";
+import config from "../../config/index";
 import type { LoginPayload, RegisterPayload } from "./auth.interface";
-
-
 
 export const authService = {
   getUserByEmail: async (email: string) => {
@@ -42,5 +42,9 @@ export const authService = {
 
     const { password: _, ...safeUser } = user;
     return safeUser;
+  },
+
+  generateToken: (userId: number) => {
+    return jwt.sign({ userId }, config.jwt_secret, { expiresIn: "7d" });
   },
 };

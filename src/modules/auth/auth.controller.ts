@@ -5,13 +5,6 @@ export const signupUser = async (req: Request, res: Response) => {
   try {
     const { name, email, password, role } = req.body;
 
-    if (!name || !email || !password || !role) {
-      return res.status(400).json({
-        success: false,
-        message: "Missing required fields: name, email, password, role",
-      });
-    }
-
     const existingUser = await authService.getUserByEmail(email);
     if (existingUser) {
       return res.status(409).json({
@@ -56,10 +49,15 @@ export const loginUser = async (req: Request, res: Response) => {
       });
     }
 
+    const token = authService.generateToken(user.id);
+
     return res.status(200).json({
       success: true,
-      message: "User logged in successfully",
-      data: user,
+      message: "Login successful",
+      data: {
+        token,
+        user,
+      },
     });
   } catch (error) {
     console.error(error);
