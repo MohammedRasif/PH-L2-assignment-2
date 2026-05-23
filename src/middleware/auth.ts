@@ -6,17 +6,22 @@ import { pool } from "../db";
 const auth = (roles: string[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const token = req.headers.authorization;
+      const authHeader = req.headers.authorization;
 
-      if (!token) {
+      if (!authHeader) {
         return res.status(401).json({
           success: false,
           message: "Unauthorized access!",
         });
       }
 
+      // support both: "Authorization: <token>" and "Authorization: Bearer <token>"
+      const token = authHeader.startsWith("Bearer ")
+        ? authHeader.slice(7)
+        : authHeader;
+
       const decoded = jwt.verify(
-        token as string,
+        token,
         config.jwt_secret,
       ) as jwt.JwtPayload;
 
