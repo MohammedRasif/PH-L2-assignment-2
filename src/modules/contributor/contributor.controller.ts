@@ -80,7 +80,7 @@ export const getAllIssues = async (req: Request, res: Response) => {
 
 export const getSingleIssue = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id as string;
 
     const issue = await contributorService.getSingleIssueFromDB(id);
 
@@ -119,7 +119,7 @@ export const getSingleIssue = async (req: Request, res: Response) => {
 
 export const updateIssue = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id as string;
     const userId = (req.user as any).userId;
     const userRole = (req.user as any).role;
 

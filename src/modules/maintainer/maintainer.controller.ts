@@ -3,7 +3,7 @@ import { maintainerService } from "./maintainer.service";
 
 export const deleteIssue = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id as string;
 
     const deleted = await maintainerService.deleteIssueFromDB(id);
 
@@ -29,7 +29,7 @@ export const deleteIssue = async (req: Request, res: Response) => {
 
 export const updateIssueStatus = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id as string;
     const { status } = req.body;
 
     if (!status) {

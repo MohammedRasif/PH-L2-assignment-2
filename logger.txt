@@ -54,3 +54,19 @@ Method -> PATCH - Time -> 1779536284240 - URL -> /api/issues/1
 Method -> PATCH - Time -> 1779536294910 - URL -> /api/issues/1
 
 Method -> PATCH - Time -> 1779536476058 - URL -> /api/issues/1
+
+Method -> GET - Time -> 1779538088843 - URL -> /
+
+Method -> GET - Time -> 1779538088917 - URL -> /favicon.ico
+
+Method -> GET - Time -> 1779538091841 - URL -> /
+
+Method -> GET - Time -> 1779538092388 - URL -> /
+
+Method -> GET - Time -> 1779538104160 - URL -> /api/login
+
+Method -> GET - Time -> 1779538127660 - URL -> /api/auth/login
+
+Method -> GET - Time -> 1779538146242 - URL -> /api/auth/login
+
+Method -> GET - Time -> 1779538201819 - URL -> /api/issues
