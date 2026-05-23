@@ -7,11 +7,9 @@ import { maintainerRoute } from "./modules/maintainer/maintainer.route";
 
 const app: Application = express();
 
-// parsers
 app.use(express.json());
 app.use(logger);
 
-// root
 app.get("/", (req: Request, res: Response) => {
   res.status(200).json({
     message: "Issue Tracker API",

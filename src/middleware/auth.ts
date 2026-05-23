@@ -15,7 +15,6 @@ const auth = (roles: string[]) => {
         });
       }
 
-      // support both: "Authorization: <token>" and "Authorization: Bearer <token>"
       const token = authHeader.startsWith("Bearer ")
         ? authHeader.slice(7)
         : authHeader;

@@ -132,7 +132,6 @@ export const updateIssue = async (req: Request, res: Response) => {
       });
     }
 
-    // contributor can only update their own issue if status is open
     if (userRole === "contributor") {
       if (existingIssue.reporter_id !== userId) {
         return res.status(403).json({

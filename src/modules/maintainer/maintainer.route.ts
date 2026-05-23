@@ -8,7 +8,6 @@ import {
 
 const router = Router();
 
-// maintainer only routes
 router.delete("/:id", auth(["maintainer"]), deleteIssue);
 router.patch("/:id/status", auth(["maintainer"]), updateIssueStatus);
 router.get("/metrics", auth(["maintainer"]), getMetrics);

@@ -13,6 +13,6 @@ router.get("/", getAllIssues);
 router.get("/:id", getSingleIssue);
 
 router.post("/", auth(["contributor", "maintainer"]), createIssue);
-router.patch("/:id", auth(["contributor", "maintainer"]), updateIssue);
+router.patch("/:id", auth(["maintainer"]), updateIssue);
 
 export const contributorRoute = router;
