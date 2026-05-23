@@ -30,3 +30,15 @@ Method -> POST - Time -> 1779533060819 - URL -> /api/issues
 Method -> POST - Time -> 1779533169430 - URL -> /api/issues
 
 Method -> POST - Time -> 1779533382142 - URL -> /api/issues
+
+Method -> GET - Time -> 1779535598839 - URL -> /api/issues
+
+Method -> GET - Time -> 1779535606730 - URL -> /api/issues?sort=newest
+
+Method -> GET - Time -> 1779535681853 - URL -> /api/issues/1
+
+Method -> GET - Time -> 1779535687205 - URL -> /api/issues/2
+
+Method -> PATCH - Time -> 1779535809197 - URL -> /api/issues/1
+
+Method -> PATCH - Time -> 1779535816447 - URL -> /api/issues/1
