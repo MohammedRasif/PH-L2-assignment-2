@@ -44,7 +44,7 @@ export const authService = {
     return safeUser;
   },
 
-  generateToken: (userId: number) => {
-    return jwt.sign({ userId }, config.jwt_secret, { expiresIn: "7d" });
+  generateToken: (userId: number, role: string) => {
+    return jwt.sign({ userId, role }, config.jwt_secret, { expiresIn: "7d" });
   },
 };

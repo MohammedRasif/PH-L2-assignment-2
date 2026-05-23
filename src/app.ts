@@ -1,19 +1,30 @@
-import express, { type Application, type Request, type Response } from 'express';
-import { contributorRoute } from './modules/contributor/contributor.route';
-import { authRoute } from './modules/auth/auth.route';
+import express, { type Application, type Request, type Response } from "express";
+import logger from "./middleware/logger";
+import globalErrorHandler from "./middleware/globalErrorHandler";
+import { authRoute } from "./modules/auth/auth.route";
+import { contributorRoute } from "./modules/contributor/contributor.route";
+import { maintainerRoute } from "./modules/maintainer/maintainer.route";
 
-const app: Application = express()
+const app: Application = express();
 
-app.use(express.json())
+// parsers
+app.use(express.json());
+app.use(logger);
 
-app.get('/', (req: Request, res: Response) => {
+// root
+app.get("/", (req: Request, res: Response) => {
   res.status(200).json({
-    message: "Express Server",
+    message: "Issue Tracker API",
     author: "Next Level",
   });
 });
 
+// routes
 app.use("/api/auth", authRoute);
-app.use("/api/users", contributorRoute);
+app.use("/api/issues", contributorRoute);
+app.use("/api/issues", maintainerRoute);
 
-export default app
+// global error handler
+app.use(globalErrorHandler);
+
+export default app;
